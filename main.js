@@ -1,3 +1,9 @@
+/*
+  Rock, Paper, Scissors - copyright 2018 by Barry White
+  Last revision - Nov 2, 2018
+  Javascript gui for Rock, Paper, Scissors - Odin Project
+*/
+
 let computerScore = 0;
 let playerScore = 0;
 let res = document.querySelector('#result');
