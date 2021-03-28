@@ -2,44 +2,72 @@
    Barry White
    3/11/21 */
 
-/* Begin with a function called computerPlay that will randomly
-   return either 'Rock', 'Paper' or 'Scissors'. We'll use this
-   function in the game to make the computer's play. */
-
 function computerPlay() {
-  let play = Math.floor((Math.random() * 3) + 1);
-  switch (play) {
+  let num = Math.floor(Math.random() * 3) + 1;
+  switch (num) {
     case 1:
-      return 'Rock';
-      break;
+      return 'rock';
     case 2:
-      return 'Paper';
-      break;
+      return 'paper';
     case 3:
-      return 'Scissors';
+      return 'scissors';
+  }
+}
+
+function playerPlay() {
+  response = prompt('Enter Rock, Paper, Scissors:')
+  return response.toLowerCase();
+}
+
+function playRound(playerSelection, computerSelection) {
+  if (playerSelection.toLowerCase() == computerSelection) {
+    return 'Tie, play again.';
+  }
+  switch (playerSelection.toLowerCase()) {
+    case 'rock':
+      if (computerSelection == 'scissors') {
+        score++;
+        return 'You Win! Rock beats Scissors';
+      } else if (computerSelection == 'paper') {
+        score--;
+        return 'You Lose! Paper beats Rock';
+      }
+      break;
+    case 'paper':
+      if (computerSelection == 'rock') {
+        score++;
+        return 'You Win! Paper beats Rock';
+      } else if (computerSelection == 'scissors') {
+        score--;
+        return 'You Lose! Scissors beats Paper';
+      }
+      break;
+    case 'scissors':
+      if (computerSelection == 'paper') {
+        score++;
+        return 'You Win! Scissors beats Paper';
+      } else if (computerSelection == 'rock') {
+        score--;
+        return 'You Lose! Rock beats Scissors';
+      }
       break;
   }
 }
 
-/* Write a function that plays a single round of Rock Paper Scissors.
-   The function should take two parameters - the playerSelection
-   and computerSelection - and then return a string that declares
-   the winner of the round like so: "You Lose! Paper beats Rock"
-   1. Make you function case insensitive (so users can input rock,
-    ROCK, Rock or any other variation).
-
-    Important note: you want to return the results of this function
-    call, not console.log() them. To test this function console.log
-    the results:
-
-    function playRound(playerSelection, computerSelection) {
-      // your code here!
-    }
-
-    const playerSelection = "rock";
+function game() {
+  for (var i = 0; i < 5; i++) {
+    const playerSelection = playerPlay();
     const computerSelection = computerPlay();
-    console.log(playRound(playerSelection, computerSelection)); */
+    console.log(playRound(playerSelection, computerSelection));
+  }
+}
 
-function playRound(playerSelection, computerSelection) {
-
+let score = 0;
+game();
+if (score > 0) {
+  console.log('You Won! -- Score:', score);
+} else if (score < 0) {
+  console.log('You Lost! -- Score:', score);
+} else {
+  console.log('Tie game, try again.');
 }
